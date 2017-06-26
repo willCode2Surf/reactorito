@@ -1,4 +1,4 @@
-import React, { component } from 'react'
+import React from 'react'
 import Ingredient from './Ingredient'
 
 const IngredientsList = ({ ingredients }) => 
