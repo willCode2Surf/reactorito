@@ -21,3 +21,10 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.col-centered 
+{
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}

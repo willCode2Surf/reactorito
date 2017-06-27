@@ -8,9 +8,10 @@ class BurritoForm extends Component
     this.props.addIngredient({ ingredient, count })
     this.refs.ingredient.value = ''
     this.refs.count.value = 1
+    this.refs.ingredient.focus()
   }
   render() {
-    return <form onSubmit={this._submit.bind(this)} className="form-inline">
+    return <form onSubmit={this._submit.bind(this)} >
       <div className="form-group">
         <label htmlFor="ingredient">Ingredient</label>
         <input type="text" ref="ingredient" id="ingredient" className="form-control"/>
