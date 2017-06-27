@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import BurritoForm from './BurritoForm'
 import IngredientsList from './IngredientsList'
+import NutritionList from './NutritionList'
 
 class Burrito extends Component {
   constructor(props) {
@@ -20,9 +21,18 @@ class Burrito extends Component {
   render() {
     return (
       <div className="burrito">
-        <div className="col-md-3 col-centered">
-          <IngredientsList ingredients={this.state.ingredients} removeIngredient={this.removeIngredientHandler} />
-          <BurritoForm addIngredient={this.addIngredientHandler} />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3">
+              <BurritoForm addIngredient={this.addIngredientHandler} />
+            </div>
+            <div className="col-md-3">
+              <IngredientsList ingredients={this.state.ingredients} />
+            </div>
+            <div className="col-md-3">
+              <NutritionList ingredients={this.state.ingredients} />
+            </div>
+          </div>
         </div>
       </div>
     )

@@ -4,6 +4,15 @@ import './App.css'
 import Burrito from './Burrito'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { name: '', burritos: [] }
+    this.addBurritoHandler = this._addBurrito.bind(this)
+  }
+  _addBurrito(burrito) {
+    this.setState({ burritos: this.state.burritos.concat([burrito]) })
+  }
   render() {
     return (
       <div className="App">
