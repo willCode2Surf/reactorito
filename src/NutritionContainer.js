@@ -8,7 +8,9 @@ const values = {
   'Cheese': { calories: 150, dailyValue: 7.5 },
   'Potato': { calories: 250, dailyValue: 12.5 },
   'Green Chili': { calories: 75, dailyValue: 3.75 },
-  'Jalapeno': { calories: 55, dailyValue: 2.325 }
+  'Jalapeno': { calories: 55, dailyValue: 2.325 },
+  'Ethnic Sausage': { calories: 0, dailyValue: 100 },
+  'Sausage': { calories: 200, dailyValue: 10 }
 }
 
 class NutritionContainer extends Component
