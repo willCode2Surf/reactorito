@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css'
 import Burrito from './Burrito'
+import BurritoList from './BurritoList'
 
 class App extends Component {
   constructor(props) {
@@ -9,6 +10,8 @@ class App extends Component {
 
     this.state = { name: '', burritos: [], clickCount: 0 }
     this.addBurritoHandler = this._addBurrito.bind(this)
+
+    // TODO - Move current burrito state to app
   }
   _addBurrito(burrito) {
     this.setState({ burritos: this.state.burritos.concat([burrito]) })
@@ -23,7 +26,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React<span onClick={this._clickorito.bind(this)}>[orito]</span></h2>
         </div>
-        <Burrito clickCount={this.state.clickCount} />
+        <BurritoList burritos={this.state.burritos} />
+        <Burrito clickCount={this.state.clickCount} addBurritoHandler={this._addBurrito.bind(this)} />
       </div>
     )
   }

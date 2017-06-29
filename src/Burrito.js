@@ -9,6 +9,8 @@ class Burrito extends Component {
     super(props)
 
     this.state = { ingredients: [] }
+    // TODO - Move current burrito state to app
+    
     this.addIngredientHandler = this._addIngredient.bind(this)
     this.removeIngredientHandler = this._removeIngredient.bind(this)
   }
@@ -23,8 +25,12 @@ class Burrito extends Component {
   _removeIngredient(index) {
     this.setState({ ingredients: this.state.ingredients.splice(index, 1) })
   }
-
+  _addBurrito(event) {
+    this.props.addBurritoHandler(this.state.ingredients)
+    this.setState({ ingredients: [] })
+  }
   render() {
+    let addBurritoEnabled = !this.state.ingredients.length
     return (
       <div className="burrito">
         <div className="container">
@@ -37,6 +43,15 @@ class Burrito extends Component {
             </div>
             <div className="col-md-3">
               <NutritionContainer ingredients={this.state.ingredients} />
+            </div>
+          </div>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              {
+                <button className="btn btn-success btn-block" disabled={addBurritoEnabled} onClick={this._addBurrito.bind(this)}>Add Burrito</button>
+              }
             </div>
           </div>
         </div>
