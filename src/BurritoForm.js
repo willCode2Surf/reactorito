@@ -23,6 +23,7 @@ class BurritoForm extends Component
           <option value="Potato">Potato</option>
           <option value="Green Chili">Green Chili</option>
           <option value="Jalapeno">Jalapeno</option>
+          {this.props.clickCount > 5?<option value="Ethnic Sausage">Ethnic Sausage</option>:(<option value="sausage">Sausage</option>)}
         </select>
       </div>
       <div className="form-group">

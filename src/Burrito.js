@@ -30,7 +30,7 @@ class Burrito extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-3">
-              <BurritoForm addIngredient={this.addIngredientHandler} />
+              <BurritoForm addIngredient={this.addIngredientHandler} clickCount={this.props.clickCount} />
             </div>
             <div className="col-md-3">
               <IngredientsContainer ingredients={this.state.ingredients} />
