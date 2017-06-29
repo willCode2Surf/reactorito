@@ -2,7 +2,7 @@
   "name": "reactorito",
   "version": "0.1.0",
   "private": true,
-  "homepage": "reactorito.azurewebsites.net/build",
+  "homepage": "reactorito.azurewebsites.net/",
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
