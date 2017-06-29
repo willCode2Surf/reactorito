@@ -3,18 +3,26 @@ import logo from './logo.svg';
 import './App.css'
 import Burrito from './Burrito'
 import BurritoList from './BurritoList'
+import { find } from 'ramda'
 
 class App extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { name: '', burritos: [], clickCount: 0 }
+    this.state = { name: '', burritos: [], clickCount: 0, currentBurrito: [] }
     this.addBurritoHandler = this._addBurrito.bind(this)
-
-    // TODO - Move current burrito state to app
   }
-  _addBurrito(burrito) {
-    this.setState({ burritos: this.state.burritos.concat([burrito]) })
+  _addBurrito() {
+    this.setState({ burritos: this.state.burritos.concat([this.state.currentBurrito]), currentBurrito: [] })
+    console.log(this.state)
+  }
+  _addIngredient(newIngredient) {
+    let ingredients = this.state.currentBurrito.filter(item => item.ingredient !== newIngredient.ingredient)
+    let existingItem = find(ing => ing.ingredient === newIngredient.ingredient, this.state.currentBurrito)
+    let defaultItem = existingItem ?
+      Object.assign({}, existingItem, { count: existingItem.count + newIngredient.count }) :
+      newIngredient
+    this.setState({ currentBurrito: ingredients.concat(defaultItem) })
   }
   _clickorito(event) {
     this.setState({ clickCount: this.state.clickCount + 1 })
@@ -26,8 +34,11 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React<span onClick={this._clickorito.bind(this)}>[orito]</span></h2>
         </div>
+        <Burrito addIngredient={this._addIngredient.bind(this)} 
+          clickCount={this.state.clickCount} 
+          addBurrito={this._addBurrito.bind(this)} 
+          ingredients={this.state.currentBurrito} />
         <BurritoList burritos={this.state.burritos} />
-        <Burrito clickCount={this.state.clickCount} addBurritoHandler={this._addBurrito.bind(this)} />
       </div>
     )
   }
